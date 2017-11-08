@@ -1,0 +1,40 @@
+﻿@model List<Videogames_Codex.Models.Videogames>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>Game List
+    <a class="btn btn-primary btn-primary" href="~/Home/Create/">New Game</a><!--boton de crear videojuego que nos mande a la accion de "Crear"--> 
+    <div class="text-right">
+        <a class="btn btn-info btn-info" href="~/Home/Ranking/">Ranking</a>
+        
+    </div>
+   
+    </h2>
+
+<table class="table">
+    <!--Se crea una tabla..-->
+    <thead>
+        <!--Los encabezados de la tabla seran...-->
+        <tr>
+            <th style="width:200px;">Name</th>
+            <th style="width:200px;">Publisher</th>
+            <th style="width:200px;">Genre</th>
+    </thead>
+    <tbody>
+        <!--Los datos de la tabla...-->
+        @foreach (Videogames_Codex.Models.Videogames videogames in Model) //Por cada juego que tengamos en la base de datos..
+        {
+            <tr>
+                <td>@(videogames.name)</td> <!--debajo del primer encabezado irá el nombre del juego-->
+                <td>@(videogames.publisher)</td><!--Y asi sucesivamente..-->
+                <td>@(videogames.Genre)</td>
+                <td>
+                    <a class="btn btn-xs btn-success" href="~/Home/Show/@videogames.id">Show</a><!--ponemos un boton de ver que nos mande a la vista "Ver" de cada compra-->
+                   
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
